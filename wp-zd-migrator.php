@@ -9,6 +9,8 @@ Description: Export your posts and pages as Zendesk Helpcenter articles
 License: GPL Version 3.0 - http://www.gnu.org/licenses/gpl.html
 */
 function wpzd_init(){
+    // register_setting( string $option_group, string $option_name, array $args = array() )
+    // https://developer.wordpress.org/reference/functions/register_setting/
     register_setting( 'wpzd', 'wpzd_options' );
 
     add_settings_section(
@@ -30,18 +32,18 @@ function wpzd_init(){
             'wpzd_custom_data'  => 'custom'
         ]
     );
-    add_settings_field(
-        'wpzd_field_zdpass',
-        __( 'Zendesk Password', 'wpzd'),
-        'wpzd_field_zdpass_cb',
-        'wpzd',
-        'wpzd_section',
-        [
-            'label_for'         => 'wpzd_field_zdpass',
-            'class'             => 'wpzd_row',
-            'wpzd_custom_data'  => 'custom'
-        ]
-    );
+    // add_settings_field(
+    //     'wpzd_field_zdpass',
+    //     __( 'Zendesk Password', 'wpzd'),
+    //     'wpzd_field_zdpass_cb',
+    //     'wpzd',
+    //     'wpzd_section',
+    //     [
+    //         'label_for'         => 'wpzd_field_zdpass',
+    //         'class'             => 'wpzd_row',
+    //         'wpzd_custom_data'  => 'custom'
+    //     ]
+    // );
 }
 
 add_action ( 'admin_init', 'wpzd_init' );
@@ -53,7 +55,7 @@ function wpzd_section_cb( $args ){
 }
 
 function wpzd_field_zduser_cb( $args ) {
-    
+
 }
 function wpzd_options_page() {
     add_menu_page(
